@@ -5,6 +5,15 @@ module.exports = {
   entry: [
     './src/app.js'
   ],
+  watch: false,
+  watchOptions: {
+    aggregateTimeout: 300, // Process all changes which happened in this time into one rebuild
+    poll: 1000, // Check for changes every second,
+    ignored: /node_modules/,
+    // ignored: [
+    //   '**/*.scss', '/node_modules/'
+    // ]
+  },
   devtool: 'source-maps',
   plugins: [
     new HtmlWebpackPlugin()
