@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -16,14 +17,19 @@ module.exports = {
     // ]
   },
   devtool: 'source-maps',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
   plugins: [
     new HtmlWebpackPlugin(),
     new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // both options are optional
-        filename: "[name].css",
-        chunkFilename: "[id].css"
-    })
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     rules: [
