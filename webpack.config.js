@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: [
     './src/app.js'
   ],
@@ -41,9 +41,9 @@ module.exports = {
         test: /\.scss$/,
         use: [
           // On Production
-          /*MiniCssExtractPlugin.loader,*/
+          MiniCssExtractPlugin.loader,
           // On development
-          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
         ]
