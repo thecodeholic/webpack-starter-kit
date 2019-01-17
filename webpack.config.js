@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: [
     './src/app.js'
   ],
@@ -45,9 +45,9 @@ module.exports = {
         test: /\.scss$/,
         use: [
           // On Production
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
           // On development
-          // process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
         ]
