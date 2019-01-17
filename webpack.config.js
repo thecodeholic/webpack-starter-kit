@@ -20,7 +20,8 @@ module.exports = {
   },
   devtool: 'source-maps',
   devServer: {
-    contentBase: path.resolve('./dist'),
+    contentBase: path.join(__dirname, 'src'),
+    watchContentBase: true,
     hot: true,
     open: true,
     inline: true
