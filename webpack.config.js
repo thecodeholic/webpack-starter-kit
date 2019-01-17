@@ -2,13 +2,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   mode: 'production',
   entry: [
     './src/app.js'
   ],
-  watch: false,
+  watch: true,
   watchOptions: {
     aggregateTimeout: 300, // Process all changes which happened in this time into one rebuild
     poll: 1000, // Check for changes every second,
@@ -19,13 +20,16 @@ module.exports = {
   },
   devtool: 'source-maps',
   devServer: {
-    contentBase: './dist',
-    hot: true
+    contentBase: path.resolve('./dist'),
+    hot: true,
+    open: true,
+    inline: true
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Webpack starter project'
+      title: 'Webpack starter project',
+      template: path.resolve('./src/index.html')
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
