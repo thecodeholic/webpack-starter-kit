@@ -1,31 +1,21 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: [
     './src/app.js'
   ],
-  watch: true,
-  watchOptions: {
-    aggregateTimeout: 300, // Process all changes which happened in this time into one rebuild
-    poll: 1000, // Check for changes every second,
-    ignored: /node_modules/,
-    // ignored: [
-    //   '**/*.scss', '/node_modules/'
-    // ]
-  },
-  devtool: 'source-maps',
-  devServer: {
-    contentBase: path.join(__dirname, 'src'),
-    watchContentBase: true,
-    hot: true,
-    open: true,
-    inline: true
-  },
+  optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin()
+    ]
+  }
+  ,
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
@@ -33,8 +23,6 @@ module.exports = {
       template: path.resolve('./src/index.html')
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
@@ -45,7 +33,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
         ]
