@@ -28,5 +28,8 @@
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.0",
     "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1"
   }
 }
