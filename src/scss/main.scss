@@ -5,4 +5,11 @@ body{
 
 .wrapper{
   margin: 0 auto;
+  .img-wrapper{
+    height: 260px;
+  }
+  .card-text{
+    height: 74px;
+    overflow: hidden;
+  }
 }
