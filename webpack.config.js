@@ -61,14 +61,25 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpg|jpeg|gif|png|svg)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: './images',
-            name: "[name].[ext]",
+        test: /\.(jpg|jpeg|gif|png|svg|webp)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: './images',
+              name: "[name].[ext]",
+            },
           },
-        },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: false,
+                quality: 10
+              }
+            }
+          },
+        ]
       },
       {
         test: /\.html$/,
