@@ -2,6 +2,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 const path = require('path');
 
 module.exports = function (env, argv) {
@@ -26,6 +27,7 @@ module.exports = function (env, argv) {
         filename: "[name].css",
         chunkFilename: "[id].css"
       }),
+      new MinifyPlugin()
     ],
     module: {
       rules: [
