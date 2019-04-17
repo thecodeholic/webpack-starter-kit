@@ -65,6 +65,18 @@ module.exports = function(){
           ]
         },
         {
+          test: /\.(woff(2)?|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'fonts/'
+              }
+            }
+          ]
+        },
+        {
           test: /\.html$/,
           use: {
             loader: 'html-loader',
