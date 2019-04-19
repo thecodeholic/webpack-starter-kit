@@ -50,6 +50,18 @@ module.exports = function (env, argv) {
           }
         },
         {
+          test: /\.(pdf|doc|docx|xls|xlsx|txt|csv|tsv)$/,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                outputPath: './files',
+                name: "[name].[ext]",
+              },
+            }
+          ]
+        },
+        {
           test: /\.(jpg|jpeg|gif|png|svg|webp)$/,
           use: [
             {
@@ -102,6 +114,9 @@ module.exports = function (env, argv) {
           test: /\.html$/,
           use: {
             loader: 'html-loader',
+            options: {
+              attrs: [':src', ':href']
+            }
           }
         },
       ]
