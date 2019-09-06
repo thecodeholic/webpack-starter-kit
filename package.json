@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx webpack --config webpack.config.prod.js --mode=production",
     "watch": "npx webpack --watch",
-    "start:dev": "webpack-dev-server"
+    "start": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",

@@ -21,7 +21,7 @@ The project has the following features:
 
 ## Running on development using [dev server](https://github.com/webpack/webpack-dev-server)
 
-Run `npm run start:dev` to start to webpack dev server with HMR ready
+Run `npm run start` to start to webpack dev server with HMR ready
 
 ## For production 
 
